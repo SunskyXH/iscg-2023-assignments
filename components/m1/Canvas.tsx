@@ -1,6 +1,5 @@
 'use client'
 import { FC, memo } from 'react'
-
 import { Canvas as ThreeCanvas } from '@react-three/fiber'
 import Bezier from './Bezier'
 interface Props {}

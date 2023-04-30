@@ -1,19 +1,23 @@
-import { FC, memo } from 'react'
-import { Vector3, BufferGeometry } from 'three'
+import { useFrame } from '@react-three/fiber'
+import { FC, forwardRef, memo, useRef } from 'react'
+import * as THREE from 'three'
 
 interface Props {
-  points: Vector3[]
+  points: THREE.Vector3[]
 }
 
-const Line: FC<Props> = (props) => {
+const Line = forwardRef<THREE.Line, Props>((props, ref) => {
   const { points } = props
-  const lineGeometry = new BufferGeometry().setFromPoints(points).translate(0, 0, -1)
+
+  const lineGeometry = new THREE.BufferGeometry().setFromPoints(points).translate(0, 0, -1)
+
   return (
     // @ts-ignore
-    <line geometry={lineGeometry}>
+    <line geometry={lineGeometry} ref={ref}>
       <lineBasicMaterial color="black" />
     </line>
   )
-}
+})
+Line.displayName = 'Line'
 
 export default memo(Line)
