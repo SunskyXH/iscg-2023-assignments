@@ -1,7 +1,5 @@
 import { FC, memo, useCallback, useRef, useState } from 'react'
 import * as THREE from 'three'
-import { useDrag } from '@use-gesture/react'
-import { ThreeEvent } from '@react-three/fiber'
 import Draggable from './Draggable'
 
 export interface ControlPointProps {

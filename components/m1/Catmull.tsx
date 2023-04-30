@@ -7,44 +7,34 @@ import ControlPoint from './common/ControlPoint'
 import SamplePoint from './common/SamplePoint'
 import Line from './common/Line'
 import GridHelper from './common/GridHelper'
-import { calcSamplePoints } from './utils/bezier'
+import { calcSamplePoints } from './utils/catmull'
 
 interface Props {}
 
 const initControlPoints = [
-  new THREE.Vector3(-10, 10, 0),
   new THREE.Vector3(-20, 0, 0),
-  new THREE.Vector3(0, 10, 0),
-  new THREE.Vector3(-10, -10, 0),
-  new THREE.Vector3(10, 10, 0),
-  new THREE.Vector3(0, -10, 0),
-  new THREE.Vector3(20, 0, 0),
+  new THREE.Vector3(-10, 10, 0),
   new THREE.Vector3(10, -10, 0),
+  new THREE.Vector3(20, 0, 0),
 ]
 
-const Bezier: FC<Props> = () => {
+const Catmull: FC<Props> = () => {
   const [controlPoints, setControlPoints] = useState<THREE.Vector3[]>(initControlPoints)
   const [samplePoints, setSamplePoints] = useState<THREE.Vector3[]>([])
 
-  const { sampleCount, controlCount } = useControls({
+  const { sampleCount } = useControls({
     sampleCount: { value: 30, min: 10, max: 100, step: 1 },
-    controlCount: { value: 8, min: 2, max: 8, step: 1 },
   })
 
-  const activeControlPoints = useMemo(
-    () => controlPoints.slice(0, controlCount),
-    [controlCount, controlPoints],
-  )
-
   const init = useCallback(() => {
-    const sp = calcSamplePoints(activeControlPoints, sampleCount)
+    const sp = calcSamplePoints(controlPoints, sampleCount)
     setSamplePoints((prev) => [...prev, ...sp])
-  }, [activeControlPoints, sampleCount])
+  }, [controlPoints, sampleCount])
 
   const update = useCallback(() => {
-    const sp = calcSamplePoints(activeControlPoints, sampleCount)
+    const sp = calcSamplePoints(controlPoints, sampleCount)
     setSamplePoints(sp)
-  }, [activeControlPoints, sampleCount])
+  }, [controlPoints, sampleCount])
 
   const updateControlPoint = useCallback((index: number, position: THREE.Vector3) => {
     setControlPoints((controlPoints) => {
@@ -66,7 +56,7 @@ const Bezier: FC<Props> = () => {
   return (
     <Canvas camera={{ position: [0, 0, 60], fov: 45, aspect: 16 / 9, near: 1, far: 500 }}>
       <GridHelper />
-      {activeControlPoints.map((controlPoint, index) => (
+      {controlPoints.map((controlPoint, index) => (
         <ControlPoint
           key={index}
           position={controlPoint}
@@ -77,16 +67,11 @@ const Bezier: FC<Props> = () => {
       {samplePoints.map((samplePoint, index) => (
         <SamplePoint key={index} position={samplePoint} />
       ))}
-      <Line points={[activeControlPoints[0], activeControlPoints[1]]} />
-      <Line
-        points={[
-          activeControlPoints[activeControlPoints.length - 2],
-          activeControlPoints[activeControlPoints.length - 1],
-        ]}
-      />
+      <Line points={[controlPoints[0], controlPoints[1]]} />
+      <Line points={[controlPoints[2], controlPoints[3]]} />
       <Line points={samplePoints} />
     </Canvas>
   )
 }
 
-export default memo(Bezier)
+export default memo(Catmull)
