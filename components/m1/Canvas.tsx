@@ -7,8 +7,8 @@ interface Props {}
 
 const Canvas: FC<Props> = () => {
   return (
-    <div className="h-[1080px] w-[1920px]">
-      <ThreeCanvas camera={{ position: [0, 0, 100], fov: 45, aspect: 16 / 9, near: 1, far: 500 }}>
+    <div className="flex h-full w-full">
+      <ThreeCanvas camera={{ position: [0, 0, 60], fov: 45, aspect: 16 / 9, near: 1, far: 500 }}>
         <Bezier />
       </ThreeCanvas>
     </div>

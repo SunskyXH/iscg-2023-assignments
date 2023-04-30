@@ -1,4 +1,4 @@
-import NavigateItem from '@/components/NavigateItem'
+import NavigateLink from '@/components/NavigateLink'
 
 export default function Home() {
   return (
@@ -10,9 +10,9 @@ export default function Home() {
         </span>
       </div>
       <div className="mt-12 grid text-center lg:mb-0 lg:grid-cols-3 lg:text-left">
-        <NavigateItem title="基本課題M1" desc="パラメトリック曲線" href="m1" />
-        <NavigateItem title="発展課題M2" desc="サブディビジョンサーフェス" href="#" wip />
-        <NavigateItem title="発展課題M3" desc="陰関数形状モデリング" href="#" wip />
+        <NavigateLink title="基本課題M1" desc="パラメトリック曲線" href="m1" />
+        <NavigateLink title="発展課題M2" desc="サブディビジョンサーフェス" href="#" wip />
+        <NavigateLink title="発展課題M3" desc="陰関数形状モデリング" href="#" wip />
       </div>
     </main>
   )
