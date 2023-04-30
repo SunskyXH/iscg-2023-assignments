@@ -15,9 +15,9 @@ const SidebarItem: FC<Props> = (props) => {
     <div
       onClick={onClick}
       className={cx(
-        'group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30',
+        'group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100',
         wip ? 'cursor-not-allowed' : 'cursor-pointer',
-        active && 'border-gray-300 bg-gray-100 dark:border-neutral-700 dark:bg-neutral-800/30',
+        active && 'border-gray-300 bg-gray-100',
       )}
     >
       <h2 className="mb-3 text-2xl font-semibold">

@@ -7,18 +7,20 @@ function cutmullRom(
   p3: THREE.Vector3,
   p4: THREE.Vector3,
 ) {
-  const tt = t * t
-  const ttt = tt * t
+  const t_square = Math.pow(t, 2)
+  const t_cubic = Math.pow(t, 3)
 
-  const q1 = -ttt + 2 * tt - t
-  const q2 = 3 * ttt - 5 * tt + 2
-  const q3 = -3 * ttt + 4 * tt + t
-  const q4 = ttt - tt
+  const q1 = -t_cubic + 2 * t_square - t
+  const q2 = 3 * t_cubic - 5 * t_square + 2
+  const q3 = -3 * t_cubic + 4 * t_square + t
+  const q4 = t_cubic - t_square
 
-  const tx = 0.5 * (p2.x * q1 + p1.x * q2 + p4.x * q3 + p3.x * q4)
-  const ty = 0.5 * (p2.y * q1 + p1.y * q2 + p4.y * q3 + p3.y * q4)
-
-  return new THREE.Vector3(tx, ty, 0)
+  return new THREE.Vector3()
+    .addScaledVector(p2, q1)
+    .addScaledVector(p1, q2)
+    .addScaledVector(p4, q3)
+    .addScaledVector(p3, q4)
+    .multiplyScalar(0.5)
 }
 
 export const calcSamplePoints = (controlPoints: THREE.Vector3[], sampleCount: number) => {
