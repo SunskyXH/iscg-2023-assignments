@@ -13,6 +13,9 @@ export default function Home() {
         <NavigateLink title="基本課題M1" desc="パラメトリック曲線" href="m1" />
         <NavigateLink title="発展課題M2" desc="サブディビジョンサーフェス" href="#" wip />
         <NavigateLink title="発展課題M3" desc="陰関数形状モデリング" href="#" wip />
+        <NavigateLink title="基本課題A1" desc="Inverse Kinematics" href="a1" />
+        <NavigateLink title="発展課題A2" desc="Deformable Simulation" href="#" wip />
+        <NavigateLink title="発展課題A3" desc="Fluid Simulation" href="#" wip />
       </div>
     </main>
   )
