@@ -1,7 +1,7 @@
 export const metadata = {
-  title: '基本課題M1 - パラメトリック曲線',
+  title: '基本課題I1 - 画像のフィルタリング',
 }
 
-export default function M1Layout({ children }: { children: React.ReactNode }) {
+export default function I1Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }

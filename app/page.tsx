@@ -11,11 +11,12 @@ export default function Home() {
       </div>
       <div className="mt-12 grid text-center lg:mb-0 lg:grid-cols-3 lg:text-left">
         <NavigateLink title="基本課題M1" desc="パラメトリック曲線" href="m1" />
-        <NavigateLink title="発展課題M2" desc="サブディビジョンサーフェス" href="#" wip />
-        <NavigateLink title="発展課題M3" desc="陰関数形状モデリング" href="#" wip />
+        {/* <NavigateLink title="発展課題M2" desc="サブディビジョンサーフェス" href="#" wip /> */}
+        {/* <NavigateLink title="発展課題M3" desc="陰関数形状モデリング" href="#" wip /> */}
         <NavigateLink title="基本課題A1" desc="Inverse Kinematics" href="a1" />
-        <NavigateLink title="発展課題A2" desc="Deformable Simulation" href="#" wip />
-        <NavigateLink title="発展課題A3" desc="Fluid Simulation" href="#" wip />
+        {/* <NavigateLink title="発展課題A2" desc="Deformable Simulation" href="#" wip /> */}
+        {/* <NavigateLink title="発展課題A3" desc="Fluid Simulation" href="#" wip /> */}
+        <NavigateLink title="基本課題I1" desc="画像のフィルタリング" href="i1" />
       </div>
     </main>
   )
